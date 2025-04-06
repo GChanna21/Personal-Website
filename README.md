@@ -1,10 +1,4 @@
-ohhhhh
 
+This isChanna
 
-This is my First Project in Github
-
-Git is Channa whaaaaaaaaa
-
-BLAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-ccnbhkcbui3huhbw db hcx cxbcvvc xbc xc caxc dcbjwdkbckuwjdhje hueqc ,s
-cndbcuidhcuhdcbducdhc nxcxhcbudhcuiekwiejidwjdkmnwdmdmasnm,nas;jBBBBBBBBBBBB
+![Screenshot 2025-04-06 185206](https://github.com/user-attachments/assets/341c93a2-5075-4a8a-953e-1beeae7a85ec)
