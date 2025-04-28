@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gouda Contact Details</title>
+    <style>
+        /* Place the styles here */
+    </style>
+</head>
+<body>
+
+    <!-- Your existing content -->
+
+    <!-- Contact Card Section -->
+    <div class="card">
+        <h1>Channa Gouda</h1>
+        <p>Mobile: +91 988007204</p>
+        <p>Email: channachanna9880@2gmail.com</p>
+
+        <!-- Button to Scroll to Contact Details -->
+        <a href="#contact-details" class="button">Contact Me</a>
+    </div>
+
+    <!-- Contact Details Section -->
+    <div id="contact-details" class="contact-section">
+        <h2>Contact Details</h2>
+        <p>Mobile: +91 98800704</p>
+        <p>Email: channachanna9880@gmail.com</p>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Show the contact details section when the button is clicked
+        document.querySelector('.button').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('contact-details').style.display = 'block';
+            window.scrollTo({
+                top: document.getElementById('contact-details').offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body>
+</html>
