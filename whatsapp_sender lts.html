@@ -79,36 +79,43 @@
     let currentIndex = 0;
   
     function sendNext() {
-      if (numberList.length === 0) {
-        const rawNumbers = document.getElementById("numbers").value;
-        numberList = rawNumbers
-          .split(/[\n,]+/)
-          .map(n => n.trim())
-          .filter(n => n !== "");
-        currentIndex = 0;
-      }
-  
-      const message = document.getElementById("message").value.trim();
-      if (!message) {
-        alert("Please enter a message.");
-        return;
-      }
-  
-      if (currentIndex < numberList.length) {
-        const number = numberList[currentIndex];
-        const encodedMessage = encodeURIComponent(message);
-  
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        const url = isMobile
-          ? `whatsapp://send?phone=${number}&text=${encodedMessage}`
-          : `https://web.whatsapp.com/send?phone=${number}&text=${encodedMessage}`;
-  
-        window.open(url, '_blank');
-        currentIndex++;
-      } else {
-        alert("All messages have been opened!");
-      }
+  if (numberList.length === 0) {
+    const rawNumbers = document.getElementById("numbers").value;
+    numberList = rawNumbers
+      .split(/[\n,]+/)
+      .map(n => n.trim())
+      .filter(n => n !== "");
+    currentIndex = 0;
+  }
+
+  const message = document.getElementById("message").value.trim();
+  if (!message) {
+    alert("Please enter a message.");
+    return;
+  }
+
+  if (currentIndex < numberList.length) {
+    const number = numberList[currentIndex];
+    const encodedMessage = encodeURIComponent(message);
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const link = document.createElement('a');
+
+    if (isMobile) {
+      link.href = `whatsapp://send?phone=${number}&text=${encodedMessage}`;
+    } else {
+      link.href = `https://web.whatsapp.com/send?phone=${number}&text=${encodedMessage}`;
     }
+
+    link.target = "_blank";
+    link.click();
+
+    currentIndex++;
+  } else {
+    alert("All messages have been opened!");
+  }
+}
+
   </script>
   
   
