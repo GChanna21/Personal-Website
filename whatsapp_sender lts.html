@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp Message Sender</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #d2e8ff, #e3ffe7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    textarea, input {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      resize: vertical;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    button {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1ebe5d;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .note {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>WhatsApp Message Sender</h2>
+    <textarea id="numbers" placeholder="Enter phone numbers (one per line or comma-separated)" rows="6"></textarea>
+    <textarea id="message" placeholder="Enter your message here" rows="4"></textarea>
+    <button onclick="sendNext()">Send to Next Number</button>
+    <div class="note">Each click sends the message to the next number.</div>
+  </div>
+
+  <script>
+    let numberList = [];
+    let currentIndex = 0;
+  
+    function sendNext() {
+      if (numberList.length === 0) {
+        const rawNumbers = document.getElementById("numbers").value;
+        numberList = rawNumbers
+          .split(/[\n,]+/)
+          .map(n => n.trim())
+          .filter(n => n !== "");
+        currentIndex = 0;
+      }
+  
+      const message = document.getElementById("message").value.trim();
+      if (!message) {
+        alert("Please enter a message.");
+        return;
+      }
+  
+      if (currentIndex < numberList.length) {
+        const number = numberList[currentIndex];
+        const url = `https://web.whatsapp.com/send?phone=${number}&text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+        currentIndex++;
+      } else {
+        alert("All messages have been opened!");
+      }
+    }
+  </script>
+  
+</body>
+</html>
