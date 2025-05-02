@@ -96,7 +96,13 @@
   
       if (currentIndex < numberList.length) {
         const number = numberList[currentIndex];
-        const url = `https://web.whatsapp.com/send?phone=${number}&text=${encodeURIComponent(message)}`;
+        const encodedMessage = encodeURIComponent(message);
+  
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const url = isMobile
+          ? `whatsapp://send?phone=${number}&text=${encodedMessage}`
+          : `https://web.whatsapp.com/send?phone=${number}&text=${encodedMessage}`;
+  
         window.open(url, '_blank');
         currentIndex++;
       } else {
@@ -104,6 +110,7 @@
       }
     }
   </script>
+  
   
 </body>
 </html>
